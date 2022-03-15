@@ -2,12 +2,14 @@
   <ul class="info">
     <p id="title">Blogwiz</p>
     <ul class="links">
-      <a href="https://www.github.com" target="_blank"
+      <a href="https://github.com/MerlinMinder/vueBlog" target="_blank"
         ><img
           src="../assets/icons/GitHub-Mark-Light-64px.png"
           alt="github logo white"
       /></a>
-      <a href="https://www.linkedin.com" target="_blank"
+      <a
+        href="https://www.linkedin.com/in/merlin-minder-489926234/"
+        target="_blank"
         ><img
           src="../assets/icons/linkedin-logo-png-1837.png"
           alt="linkedin logo blue"
@@ -21,7 +23,7 @@
           alt="firebase logo orange"
       /></a>
     </ul>
-    <a href="#" target="_blank" id="mail">merlin@mail.com</a>
+    <p>merlin.coding@gmail.com</p>
   </ul>
 </template>
 
@@ -41,15 +43,6 @@
       height: 4vh;
       width: auto;
       margin-right: 10px;
-    }
-  }
-
-  #mail {
-    font-size: 16px;
-
-    &:hover {
-      color: $col-lime;
-      font-weight: 800;
     }
   }
 }
