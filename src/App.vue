@@ -7,9 +7,20 @@
 </template>
 
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView, useRouter } from "vue-router";
 import HeaderVue from "./components/Header.vue";
 import FooterVue from "./components/Footer.vue";
+import { ref, watch } from "vue";
+
+const login = ref(false);
+const router = useRouter();
+
+watch(
+  () => router.currentRoute.value,
+  () => {
+    login = router.currentRoute.value.name;
+  }
+);
 </script>
 
 <style lang="scss">
