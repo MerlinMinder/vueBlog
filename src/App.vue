@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <HeaderVue />
+    <HeaderVue v-show="login" />
     <RouterView></RouterView>
-    <FooterVue />
+    <FooterVue v-show="login" />
   </div>
 </template>
 
@@ -10,17 +10,11 @@
 import { RouterView, useRouter } from "vue-router";
 import HeaderVue from "./components/Header.vue";
 import FooterVue from "./components/Footer.vue";
-import { ref, watch } from "vue";
+import router from "./router";
+import { ref } from "vue";
 
-const login = ref(false);
-const router = useRouter();
-
-watch(
-  () => router.currentRoute.value,
-  () => {
-    login = router.currentRoute.value.name;
-  }
-);
+let route = useRouter(router).currentRoute.valueOf("name");
+let login = ref(route.name != "login");
 </script>
 
 <style lang="scss">
@@ -30,7 +24,6 @@ watch(
 
 * {
   font-family: "Nunito";
-  color: $col-light;
   padding: 0;
   margin: 0;
 }

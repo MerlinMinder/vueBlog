@@ -24,7 +24,7 @@ import { reactive } from "vue";
 import { db } from "../firebase/firebaseinit";
 import { setDoc, doc } from "firebase/firestore";
 
-const account = reactive({
+let account = reactive({
   name: "",
   surname: "",
   email: "",
