@@ -18,7 +18,7 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-const admin = ref(false);
+let admin = ref(true);
 </script>
 
 <style lang="scss" scoped>

@@ -1,15 +1,24 @@
 <template>
   <div class="container">
-    <HeaderVue />
+    <HeaderVue v-if="!login" />
     <RouterView></RouterView>
-    <FooterVue />
+    <FooterVue v-if="!login" />
   </div>
 </template>
 
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView, useRouter } from "vue-router";
 import HeaderVue from "./components/Header.vue";
 import FooterVue from "./components/Footer.vue";
+import router from "./router";
+import { ref, watch } from "vue";
+
+let route = ref(useRouter(router).currentRoute.valueOf("name"));
+let login = ref(true);
+
+watch(route, () => {
+  login.value = route.value.name == "login";
+});
 </script>
 
 <style lang="scss">
@@ -19,7 +28,6 @@ import FooterVue from "./components/Footer.vue";
 
 * {
   font-family: "Nunito";
-  color: $col-light;
   padding: 0;
   margin: 0;
 }
