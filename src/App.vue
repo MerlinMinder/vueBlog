@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <HeaderVue v-show="login" />
+    <HeaderVue v-if="!login" />
     <RouterView></RouterView>
-    <FooterVue v-show="login" />
+    <FooterVue v-if="!login" />
   </div>
 </template>
 
@@ -11,10 +11,14 @@ import { RouterView, useRouter } from "vue-router";
 import HeaderVue from "./components/Header.vue";
 import FooterVue from "./components/Footer.vue";
 import router from "./router";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-let route = useRouter(router).currentRoute.valueOf("name");
-let login = ref(route.name != "login");
+let route = ref(useRouter(router).currentRoute.valueOf("name"));
+let login = ref(true);
+
+watch(route, () => {
+  login.value = route.value.name == "login";
+});
 </script>
 
 <style lang="scss">

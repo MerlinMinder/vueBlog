@@ -1,4 +1,5 @@
 <template>
+  <button @click="router.back()">vlll</button>
   <div class="container">
     <ul>
       <input type="text" v-model="account.name" placeholder="Name" />
@@ -23,6 +24,7 @@
 import { reactive } from "vue";
 import { db } from "../firebase/firebaseinit";
 import { setDoc, doc } from "firebase/firestore";
+import router from "../router";
 
 let account = reactive({
   name: "",
@@ -35,8 +37,13 @@ let account = reactive({
 const submitForm = async () => {
   const user = doc(db, "data", Date());
   await setDoc(user, account, { merge: true });
-  account.name = "";
-  account.password = "";
+  account = {
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
 };
 </script>
 
