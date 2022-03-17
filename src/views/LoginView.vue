@@ -1,84 +1,41 @@
 <template>
-  <button @click="router.back()">vlll</button>
-  <div class="container">
-    <ul>
-      <input type="text" v-model="account.name" placeholder="Name" />
-      <input type="text" v-model="account.surname" placeholder="Surname" />
-      <input type="email" v-model="account.email" placeholder="E-Mail" />
-      <input
-        type="password"
-        v-model="account.password"
-        placeholder="Password"
-      />
-      <input
-        type="password"
-        v-model="account.confirmPassword"
-        placeholder="Confirm Password"
-      />
-    </ul>
-    <button @click="submitForm">Login</button>
+  <div id="body">
+    <button @click="router.back()" id="back">vlll</button>
+    <div class="formcontainer">
+      <SignUpVue />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import { db } from "../firebase/firebaseinit";
-import { setDoc, doc } from "firebase/firestore";
+import SignUpVue from "../components/SignUp.vue";
 import router from "../router";
-
-let account = reactive({
-  name: "",
-  surname: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-});
-
-const submitForm = async () => {
-  const user = doc(db, "data", Date());
-  await setDoc(user, account, { merge: true });
-  account = {
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  };
-};
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/variables.scss";
 
-.container {
+#body {
+  height: 100vh;
+  background-color: $col-dark1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  ul {
+  #back {
+    position: absolute;
+    top: 10vh;
+    left: 10vh;
+  }
+
+  .formcontainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 340px;
-    width: 360px;
-    border-radius: 20px;
+    align-items: center;
+    width: fit-content;
     padding: 35px 30px;
-    background-color: $col-dark1;
-
-    input {
-      width: auto;
-      height: fit-content;
-      color: black;
-      padding: 10px 20px;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 15px;
-      border: 2px solid $col-light;
-      background-color: $col-lime;
-    }
-  }
-  button {
-    color: black;
+    border-radius: 20px;
+    background-color: $col-lime;
   }
 }
 </style>

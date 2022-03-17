@@ -20,6 +20,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  bottom: 0;
 
   .routers {
     flex: 0;
