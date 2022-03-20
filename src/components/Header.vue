@@ -17,7 +17,7 @@ import RouterLinksVue from "./RouterLinks.vue";
 
 nav {
   background-color: $col-dark1;
-  width: 100vw;
+
   display: flex;
   flex-direction: row;
   align-items: center;

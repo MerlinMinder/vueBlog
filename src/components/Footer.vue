@@ -33,6 +33,7 @@ footer {
     margin-top: 106px;
     height: fit-content;
     padding: 25px;
+    color: $col-light;
   }
 }
 </style>
