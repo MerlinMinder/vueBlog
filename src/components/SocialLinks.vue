@@ -61,5 +61,8 @@
       }
     }
   }
+  p {
+    color: $col-light;
+  }
 }
 </style>

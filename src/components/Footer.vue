@@ -20,6 +20,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  bottom: 0;
 
   .routers {
     flex: 0;
@@ -32,6 +33,7 @@ footer {
     margin-top: 106px;
     height: fit-content;
     padding: 25px;
+    color: $col-light;
   }
 }
 </style>
