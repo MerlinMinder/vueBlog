@@ -1,6 +1,6 @@
 <template>
   <div id="body">
-    <button @click="router.push('/')" id="back">go back</button>
+    <button @click="router.push('/')" id="back">GO BACK</button>
     <div class="formcontainer">
       <RouterView />
     </div>
