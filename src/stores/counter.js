@@ -1,16 +1,14 @@
 import { defineStore } from "pinia";
 
-export const useLoginStore = defineStore({
-  id: "counter",
+export const useAdminStore = defineStore({
+  id: "admin",
   state: () => ({
-    counter: 0,
+    admin: false,
   }),
-  getters: {
-    doubleCount: (state) => state.counter * 2,
-  },
+  getters: {},
   actions: {
-    increment() {
-      this.counter++;
+    change() {
+      state.admin = !state.admin;
     },
   },
 });

@@ -1,14 +1,14 @@
 <template>
   <div id="body">
-    <button @click="router.back()" id="back">vlll</button>
+    <button @click="router.push('/')" id="back">{{ "<-" }}</button>
     <div class="formcontainer">
-      <SignUpVue />
+      <RouterView />
     </div>
   </div>
 </template>
 
 <script setup>
-import SignUpVue from "../components/SignUp.vue";
+import { RouterView } from "vue-router";
 import router from "../router";
 </script>
 

@@ -13,11 +13,11 @@ import FooterVue from "./components/Footer.vue";
 import router from "./router";
 import { ref, watch } from "vue";
 
-let route = ref(useRouter(router).currentRoute.valueOf("name"));
+let route = ref(router.currentRoute.valueOf("name"));
 let login = ref(true);
 
 watch(route, () => {
-  login.value = route.value.name == "login";
+  login.value = route.value.meta.title == "Login";
 });
 </script>
 

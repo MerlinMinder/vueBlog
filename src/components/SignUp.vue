@@ -1,4 +1,6 @@
 <template>
+  <p id="question">Already have an account? Login</p>
+  <RouterLink :to="{ name: 'login' }" id="login">Login</RouterLink>
   <p id="title">Sign Up</p>
   <ul>
     <input class="li" type="text" v-model="account.name" placeholder="Name" />
@@ -20,12 +22,6 @@
       v-model="account.password"
       placeholder="Password"
     />
-    <input
-      class="li"
-      type="password"
-      v-model="account.confirmPassword"
-      placeholder="Confirm Password"
-    />
     <p id="error">{{ errorMessage }}</p>
     <button class="li li-dark" @click="submitForm">Sign Up</button>
   </ul>
@@ -33,16 +29,18 @@
 
 <script setup>
 import { ref } from "vue";
-import { db } from "../firebase/firebaseinit";
+import { auth, db } from "../firebase/firebaseinit";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import router from "../router";
+import { RouterLink } from "vue-router";
 
 let account = ref({
   name: "",
   surname: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  admin: false,
 });
 
 let errorMessage = ref("");
@@ -59,29 +57,44 @@ const submitForm = async () => {
     errorMessage.value = "Please fill out all fields!";
     return;
   }
-  if (account.value.password != account.value.confirmPassword) {
-    errorMessage.value = "The Passwords don't match!";
-    account.value.password = "";
-    account.value.confirmPassword = "";
-    return;
-  }
-  router.push("/");
-  delete account.value.confirmPassword;
-  const user = doc(db, "data", "modata");
-  await setDoc(user, account.value, { merge: true });
-  account.value = {
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  };
-  errorMessage.value = "";
+
+  createUserWithEmailAndPassword(
+    auth,
+    account.value.email,
+    account.value.password
+  )
+    .then(async () => {
+      delete account.value.password;
+      const user = doc(db, "users", auth.currentUser.uid);
+      await setDoc(user, account.value, { merge: true });
+      account.value = {
+        name: "",
+        surname: "",
+        email: "",
+        password: "",
+        admin: false,
+      };
+      errorMessage.value = "";
+    })
+    .then(router.push("/"))
+    .catch((error) => {
+      errorMessage.value = error.code.slice(5);
+    });
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/variables.scss";
+
+#login {
+  position: absolute;
+  top: 35px;
+  right: 77px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 #title {
   font-size: 2rem;
@@ -93,7 +106,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 300px;
+  height: 250px;
   min-width: 240px;
   width: 80vw;
   max-width: 300px;
