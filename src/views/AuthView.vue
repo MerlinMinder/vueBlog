@@ -1,6 +1,6 @@
 <template>
   <div id="body">
-    <button @click="router.push('/')" id="back">{{ "<-" }}</button>
+    <button @click="router.push('/')" id="back">go back</button>
     <div class="formcontainer">
       <RouterView />
     </div>
@@ -26,6 +26,14 @@ import router from "../router";
     position: absolute;
     top: 10vh;
     left: 10vh;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50px;
+
+    &:hover {
+      transform: scale(1.01);
+      cursor: pointer;
+    }
   }
 
   .formcontainer {
