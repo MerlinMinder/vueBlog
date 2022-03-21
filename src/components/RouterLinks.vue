@@ -6,19 +6,54 @@
     <RouterLink class="link link-second" :to="{ name: 'blogs' }"
       >Blogs</RouterLink
     >
-    <RouterLink v-if="admin" class="link link-second" :to="{ name: 'editor' }">
+    <RouterLink
+      v-if="admin.admin"
+      class="link link-second"
+      :to="{ name: 'editor' }"
+    >
       Editor</RouterLink
     >
-    <RouterLink class="link link-second" :to="{ name: 'login' }"
+    <RouterLink
+      v-if="!loggedin"
+      class="link link-second"
+      :to="{ name: 'signup' }"
       >Login/Register</RouterLink
     >
+    <div @click="click" v-else class="link link-second">
+      {{ name }}
+    </div>
   </ul>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-let admin = ref(true);
+import { auth, db } from "../firebase/firebaseinit";
+import { getDoc, doc } from "firebase/firestore";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { useAdminStore } from "../stores/counter";
+const admin = useAdminStore();
+const loggedin = ref(false);
+const name = ref("$");
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    name.value = (await getDoc(doc(db, "users", user.uid)))
+      .data()
+      .name[0].toUpperCase();
+    loggedin.value = true;
+    if ((await getDoc(doc(db, "users", user.uid))).data().admin) {
+      admin.admin = true;
+    }
+  } else {
+    loggedin.value = false;
+    admin.admin = false;
+  }
+});
+const click = async () => {
+  signOut(auth);
+  loggedin.value = false;
+  admin.admin = false;
+};
 </script>
 
 <style lang="scss" scoped>
