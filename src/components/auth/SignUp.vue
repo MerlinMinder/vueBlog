@@ -29,10 +29,10 @@
 
 <script setup>
 import { ref } from "vue";
-import { auth, db } from "../firebase/firebaseinit";
+import { auth, db } from "../../firebase/firebaseinit";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import router from "../router";
+import router from "../../router";
 import { RouterLink } from "vue-router";
 
 let account = ref({
@@ -84,7 +84,7 @@ const submitForm = async () => {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables.scss";
+@import "../../assets/variables.scss";
 
 #login {
   position: absolute;

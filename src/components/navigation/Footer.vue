@@ -12,7 +12,7 @@ import SocialLinksVue from "./SocialLinks.vue";
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables.scss";
+@import "../../assets/variables.scss";
 
 footer {
   background-color: $col-dark1;

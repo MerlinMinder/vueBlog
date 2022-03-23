@@ -13,7 +13,7 @@ import RouterLinksVue from "./RouterLinks.vue";
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables.scss";
+@import "../../assets/variables.scss";
 
 nav {
   background-color: $col-dark1;

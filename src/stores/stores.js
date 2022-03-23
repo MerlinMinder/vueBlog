@@ -6,9 +6,18 @@ export const useAdminStore = defineStore({
     admin: false,
   }),
   getters: {},
+  actions: {},
+});
+
+export const useBlogStore = defineStore({
+  id: "blogs",
+  state: () => ({
+    blogs: [],
+  }),
+  getters: {},
   actions: {
-    change() {
-      state.admin = !state.admin;
+    addblog(blog) {
+      this.blogs.push(blog);
     },
   },
 });
