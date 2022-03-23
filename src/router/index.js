@@ -4,8 +4,11 @@ import BlogsView from "../views/BlogsView.vue";
 import BlogView from "../views/BlogView.vue";
 import AuthView from "../views/AuthView.vue";
 import EditorView from "../views/EditorView.vue";
-import SignUpVue from "../components/SignUp.vue";
-import LoginVue from "../components/Login.vue";
+import SignUpVue from "../components/auth/SignUp.vue";
+import LoginVue from "../components/auth/Login.vue";
+import NewBlogVue from "../components/editor/NewBlog.vue";
+import PostVue from "../components/editor/Post.vue";
+import BlogsVue from "../components/editor/Blogs.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +25,15 @@ const router = createRouter({
       name: "editor",
       component: EditorView,
       meta: { title: "Editor" },
+      children: [
+        {
+          path: "newblog",
+          name: "newblog",
+          component: NewBlogVue,
+        },
+        { path: "postblog", name: "postblog", component: PostVue },
+        { path: "editblogs", name: "editblogs", component: BlogsVue },
+      ],
     },
     {
       path: "/auth",

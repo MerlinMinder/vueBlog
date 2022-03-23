@@ -7,7 +7,7 @@
         target="_blank"
         title="Github"
         ><img
-          src="../assets/icons/GitHub-Mark-Light-64px.png"
+          src="../../assets/icons/GitHub-Mark-Light-64px.png"
           alt="github logo white"
       /></a>
       <a
@@ -15,15 +15,15 @@
         target="_blank"
         title="Linkedin"
         ><img
-          src="../assets/icons/linkedin-logo-png-1837.png"
+          src="../../assets/icons/linkedin-logo-png-1837.png"
           alt="linkedin logo blue"
       /></a>
       <a href="https://www.vuejs.org" target="_blank" title="Vuejs"
-        ><img src="../assets/icons/Vue.js_Logo_2.svg" alt="vuejs logo green"
+        ><img src="../../assets/icons/Vue.js_Logo_2.svg" alt="vuejs logo green"
       /></a>
       <a href="https://www.firebase.com" target="_blank" title="Firebase"
         ><img
-          src="../assets/icons/logo-logomark.svg"
+          src="../../assets/icons/logo-logomark.svg"
           alt="firebase logo orange"
       /></a>
     </ul>
@@ -32,7 +32,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../assets/variables.scss";
+@import "../../assets/variables.scss";
 .info {
   padding: 25px;
 

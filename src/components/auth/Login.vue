@@ -17,10 +17,10 @@
 
 <script setup>
 import { ref } from "vue";
-import router from "../router";
+import router from "../../router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { RouterLink } from "vue-router";
-import { auth } from "../firebase/firebaseinit";
+import { auth } from "../../firebase/firebaseinit";
 
 const email = ref("");
 const password = ref("");
@@ -43,7 +43,7 @@ const submitForm = async () => {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables.scss";
+@import "../../assets/variables.scss";
 
 #title {
   font-size: 2rem;

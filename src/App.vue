@@ -1,24 +1,29 @@
 <template>
   <div class="container">
-    <HeaderVue v-if="!login" />
+    <HeaderVue v-if="useRoute().path.slice(1, 5) != 'auth'" />
     <RouterView></RouterView>
-    <FooterVue v-if="!login" />
+    <FooterVue v-if="useRoute().path.slice(1, 5) != 'auth'" />
   </div>
 </template>
 
 <script setup>
-import { RouterView, useRouter } from "vue-router";
-import HeaderVue from "./components/Header.vue";
-import FooterVue from "./components/Footer.vue";
-import router from "./router";
-import { ref, watch } from "vue";
+import { RouterView, useRoute } from "vue-router";
+import HeaderVue from "./components/navigation/Header.vue";
+import FooterVue from "./components/navigation/Footer.vue";
+import { onBeforeMount } from "@vue/runtime-core";
+import { useBlogStore } from "./stores/stores";
+import { collection, getDocs } from "@firebase/firestore";
+import { db } from "./firebase/firebaseinit";
 
-let route = ref(router.currentRoute.valueOf("name"));
-let login = ref(true);
+const fetchBlogs = async () => {
+  const blogs = useBlogStore();
+  const blogCollection = await getDocs(collection(db, "blogs"));
+  blogCollection.forEach((doc) => {
+    blogs.addblog(doc.data());
+  });
+};
 
-watch(route, () => {
-  login.value = route.value.meta.title == "Login";
-});
+onBeforeMount(fetchBlogs());
 </script>
 
 <style lang="scss">

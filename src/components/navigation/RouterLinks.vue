@@ -9,7 +9,7 @@
     <RouterLink
       v-if="admin.admin"
       class="link link-second"
-      :to="{ name: 'editor' }"
+      :to="{ name: 'editblogs' }"
     >
       Editor</RouterLink
     >
@@ -28,10 +28,11 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-import { auth, db } from "../firebase/firebaseinit";
+import { auth, db } from "../../firebase/firebaseinit";
 import { getDoc, doc } from "firebase/firestore";
 import { signOut, onAuthStateChanged } from "firebase/auth";
-import { useAdminStore } from "../stores/counter";
+import { useAdminStore } from "../../stores/stores";
+import router from "../../router";
 const admin = useAdminStore();
 const loggedin = ref(false);
 const name = ref("$");
@@ -53,11 +54,12 @@ const click = async () => {
   signOut(auth);
   loggedin.value = false;
   admin.admin = false;
+  router.push("/");
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables.scss";
+@import "../../assets/variables.scss";
 ul {
   display: flex;
   flex: 1;
