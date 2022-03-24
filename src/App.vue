@@ -1,15 +1,38 @@
 <template>
   <div class="container">
-    <HeaderVue />
+    <HeaderVue v-if="useRoute().path.slice(1, 5) != 'auth'" />
     <RouterView></RouterView>
-    <FooterVue />
+    <FooterVue v-if="useRoute().path.slice(1, 5) != 'auth'" />
   </div>
 </template>
 
 <script setup>
-import { RouterView } from "vue-router";
-import HeaderVue from "./components/Header.vue";
-import FooterVue from "./components/Footer.vue";
+import { RouterView, useRoute } from "vue-router";
+import HeaderVue from "./components/navigation/Header.vue";
+import FooterVue from "./components/navigation/Footer.vue";
+import { onBeforeMount } from "@vue/runtime-core";
+import { useBlogStore } from "./stores/stores";
+import { collection, getDocs } from "@firebase/firestore";
+import { db } from "./firebase/firebaseinit";
+
+const fetchBlogs = async () => {
+  const blogs = useBlogStore();
+  const blogCollection = await getDocs(collection(db, "blogs"));
+  blogCollection.forEach(async (doc) => {
+    const posts = [];
+    const postCollection = await getDocs(
+      collection(db, `blogs/${doc.data().title}/posts`)
+    );
+    postCollection.forEach((postdoc) => {
+      posts.unshift(postdoc.data());
+    });
+    const blog = doc.data();
+    blog["posts"] = posts;
+    blogs.addblog(blog);
+  });
+};
+
+onBeforeMount(fetchBlogs());
 </script>
 
 <style lang="scss">
@@ -19,13 +42,25 @@ import FooterVue from "./components/Footer.vue";
 
 * {
   font-family: "Nunito";
-  color: $col-light;
   padding: 0;
   margin: 0;
+  border-color: $border;
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: $text;
+}
+
+a {
+  color: $text;
+}
+
+p {
+  color: $text;
+}
+
+button {
+  background-color: $button;
 }
 </style>

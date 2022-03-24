@@ -1,7 +1,17 @@
 <template>
-  <h2>hello friend</h2>
+  <div id="page"></div>
 </template>
 
-<script setup></script>
+<script setup>
+const sendData = async () => {
+  console.log("hi");
+};
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../assets/variables.scss";
+
+#page {
+  background-color: $background;
+}
+</style>
