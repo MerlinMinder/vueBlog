@@ -39,7 +39,7 @@
   #title {
     font-size: 30px;
     font-weight: bold;
-    color: $col-lime;
+    color: $title;
   }
   .links {
     margin: 10px 0px;
@@ -62,7 +62,7 @@
     }
   }
   p {
-    color: $col-light;
+    color: $text;
   }
 }
 </style>

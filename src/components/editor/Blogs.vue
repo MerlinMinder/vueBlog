@@ -1,10 +1,10 @@
 <template>
-  <div class="container" v-if="stateblogs.blogs">
+  <div class="container" v-if="blogs.blogs">
     <RouterLink
       class="blogpost"
-      v-for="blog of stateblogs.blogs"
+      v-for="blog of blogs.blogs"
       :key="blog"
-      :to="{ name: 'postblog' }"
+      :to="`/editor/postblog/${blog.title}`"
     >
       <BlogVue :img="blog.img" :title="blog.title" :date="blog.upload" />
     </RouterLink>
@@ -12,24 +12,24 @@
 </template>
 
 <script setup>
-import { onBeforeMount, ref } from "@vue/runtime-core";
 import { RouterLink } from "vue-router";
 import { useBlogStore } from "../../stores/stores";
 import BlogVue from "../Blog.vue";
 
-const stateblogs = useBlogStore();
+const blogs = useBlogStore();
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/variables.scss";
 .container {
-  padding: 80px;
+  padding: 85px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: start;
 
   .blogpost {
+    margin: 0px 40px;
     text-decoration: none;
   }
 }

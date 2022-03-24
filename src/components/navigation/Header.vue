@@ -16,7 +16,7 @@ import RouterLinksVue from "./RouterLinks.vue";
 @import "../../assets/variables.scss";
 
 nav {
-  background-color: $col-dark1;
+  background-color: $navigation;
 
   display: flex;
   flex-direction: row;
@@ -25,7 +25,7 @@ nav {
   .link-title {
     font-size: 30px;
     font-weight: bold;
-    color: $col-lime;
+    color: $title;
   }
 }
 </style>

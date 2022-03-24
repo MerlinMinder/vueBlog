@@ -19,7 +19,12 @@
       :to="{ name: 'signup' }"
       >Login/Register</RouterLink
     >
-    <div @click="click" v-else class="link link-second">
+    <div
+      @click="click"
+      v-else
+      class="link link-second profile"
+      title="Sign Out"
+    >
       {{ name }}
     </div>
   </ul>
@@ -66,13 +71,31 @@ ul {
   justify-content: flex-end;
 
   .link-second {
-    margin-right: 30px;
+    margin: 0px 15px;
     font-size: 20px;
-    color: $col-light;
+    color: $text;
+    display: flex;
+    align-items: center;
 
     &:hover {
       font-weight: 800;
-      color: $col-lime;
+      color: $hover;
+      cursor: pointer;
+    }
+  }
+
+  .profile {
+    font-size: 30px;
+    font-weight: 1000;
+    width: 50px;
+    height: 50px;
+    background-color: $background;
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 }

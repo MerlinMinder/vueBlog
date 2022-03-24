@@ -5,8 +5,8 @@
       <editor
         api-key="jsvlfar0ke1dnz3qs8fab25fyog6zo4vrwgfc5hwidmle72z"
         :init="{
-          height: 200,
-          width: 240,
+          height: 250,
+          width: 300,
           menubar: false,
           toolbar: '',
           statusbar: false,
@@ -50,8 +50,8 @@ const createBlog = async () => {
       { img: img.value, title: title.value, upload: Date().slice(0, 24) },
       { merge: true }
     );
-    router.push({ name: "blogs" });
     submitButtonText.value = "Create New Blog";
+    router.push("/editor/editblogs");
   } else {
     submitButtonText.value = "Fill out Forms!";
   }
@@ -62,7 +62,7 @@ const adjustImg = () => {
     let tempImg = document.createElement("div");
     tempImg.innerHTML = img.value;
     tempImg = tempImg.firstChild.firstChild;
-    tempImg.style.cssText = "width: 100%; height: 200px; object-fit: cover;";
+    tempImg.style.cssText = "width: 100%; height: 250px; object-fit: cover;";
     img.value = tempImg.outerHTML;
     adjustButtonText.value = "Adjust Image";
   } catch (e) {
@@ -89,7 +89,7 @@ const adjustImg = () => {
     textarea {
       resize: none;
       height: 70px;
-      width: 240px;
+      width: 300px;
       padding: 10px;
       overflow: hidden;
       font-size: 20px;
@@ -101,8 +101,8 @@ const adjustImg = () => {
       border-radius: 10px;
       padding: 10px;
       font-weight: 700;
-      border: 2px solid $col-dark1;
-      background-color: $col-lime;
+      border: 2px solid $border;
+      background-color: $buttonlight;
 
       &:hover {
         transform: scale(1.01);
@@ -115,11 +115,10 @@ const adjustImg = () => {
       font-size: 10px;
       padding: 2px;
       border-radius: 2px;
-      top: 210px;
+      top: 260px;
       right: 0;
     }
   }
-
   .blogvue {
     margin-left: 50px;
   }

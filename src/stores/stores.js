@@ -12,12 +12,12 @@ export const useAdminStore = defineStore({
 export const useBlogStore = defineStore({
   id: "blogs",
   state: () => ({
-    blogs: [],
+    blogs: {},
   }),
   getters: {},
   actions: {
     addblog(blog) {
-      this.blogs.push(blog);
+      this.blogs[blog.title] = blog;
     },
   },
 });

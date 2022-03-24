@@ -7,7 +7,7 @@ import EditorView from "../views/EditorView.vue";
 import SignUpVue from "../components/auth/SignUp.vue";
 import LoginVue from "../components/auth/Login.vue";
 import NewBlogVue from "../components/editor/NewBlog.vue";
-import PostVue from "../components/editor/Post.vue";
+import NewPostVue from "../components/editor/NewPost.vue";
 import BlogsVue from "../components/editor/Blogs.vue";
 
 const router = createRouter({
@@ -21,6 +21,12 @@ const router = createRouter({
       meta: { title: "Blogs" },
     },
     {
+      path: "/posts/:title",
+      name: "posts",
+      component: BlogView,
+      meta: { title: "Posts" },
+    },
+    {
       path: "/editor",
       name: "editor",
       component: EditorView,
@@ -31,7 +37,7 @@ const router = createRouter({
           name: "newblog",
           component: NewBlogVue,
         },
-        { path: "postblog", name: "postblog", component: PostVue },
+        { path: "postblog/:title", name: "postblog", component: NewPostVue },
         { path: "editblogs", name: "editblogs", component: BlogsVue },
       ],
     },

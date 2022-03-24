@@ -15,7 +15,7 @@ import SocialLinksVue from "./SocialLinks.vue";
 @import "../../assets/variables.scss";
 
 footer {
-  background-color: $col-dark1;
+  background-color: $navigation;
   padding: 25px 0px;
   display: flex;
   flex-direction: row;
@@ -33,7 +33,7 @@ footer {
     margin-top: 106px;
     height: fit-content;
     padding: 25px;
-    color: $col-light;
+    color: $text;
   }
 }
 </style>

@@ -73,19 +73,19 @@ ul {
   .li {
     width: auto;
     height: fit-content;
-    color: black;
+    color: $text;
     padding: 10px 20px;
     font-size: 15px;
     font-weight: 600;
     border-radius: 15px;
     border: none;
-    background-color: $col-light;
+    background-color: $entry;
   }
 
   .li-dark {
     margin-top: 13px;
-    color: $col-light;
-    background-color: $col-dark1;
+    color: $text;
+    background-color: $button;
 
     &:hover {
       transform: scale(1.01);
@@ -96,7 +96,7 @@ ul {
     position: absolute;
     bottom: 47px;
     left: 15px;
-    color: red;
+    color: $error;
     height: 13px;
     font-size: 13px;
     font-weight: bold;

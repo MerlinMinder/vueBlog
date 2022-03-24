@@ -18,8 +18,17 @@ import { db } from "./firebase/firebaseinit";
 const fetchBlogs = async () => {
   const blogs = useBlogStore();
   const blogCollection = await getDocs(collection(db, "blogs"));
-  blogCollection.forEach((doc) => {
-    blogs.addblog(doc.data());
+  blogCollection.forEach(async (doc) => {
+    const posts = [];
+    const postCollection = await getDocs(
+      collection(db, `blogs/${doc.data().title}/posts`)
+    );
+    postCollection.forEach((postdoc) => {
+      posts.unshift(postdoc.data());
+    });
+    const blog = doc.data();
+    blog["posts"] = posts;
+    blogs.addblog(blog);
   });
 };
 
@@ -35,10 +44,23 @@ onBeforeMount(fetchBlogs());
   font-family: "Nunito";
   padding: 0;
   margin: 0;
+  border-color: $border;
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: $text;
+}
+
+a {
+  color: $text;
+}
+
+p {
+  color: $text;
+}
+
+button {
+  background-color: $button;
 }
 </style>

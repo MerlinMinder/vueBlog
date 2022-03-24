@@ -11,8 +11,6 @@
 </template>
 
 <script setup>
-import PostVue from "../components/editor/Post.vue";
-import BlogsVue from "../components/editor/Blogs.vue";
 import { useAdminStore } from "../stores/stores";
 import { RouterView, RouterLink, useRoute } from "vue-router";
 const admin = useAdminStore();
@@ -26,6 +24,7 @@ const admin = useAdminStore();
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: $background;
 
   #newblog {
     text-decoration: none;
@@ -33,12 +32,12 @@ const admin = useAdminStore();
     border-radius: 5px;
     font-size: 25px;
     font-weight: 800;
-    background-color: $col-dark1;
+    background-color: $background;
     margin-bottom: 20px;
-    color: $col-light;
+    color: $text;
 
     &:hover {
-      color: $col-lime;
+      color: $hover;
       transform: scale(1.02);
     }
   }

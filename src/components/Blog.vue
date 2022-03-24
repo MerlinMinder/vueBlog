@@ -17,29 +17,39 @@ const props = defineProps(["img", "title", "date"]);
   height: 400px;
   width: 300px;
   border-radius: 20px;
-  background-color: $col-dark1;
-  border: 30px $col-dark1 solid;
+  background-color: $form;
 
   #outimg {
-    background-color: $col-light;
-    height: 200px;
-    width: 240px;
+    background-color: $entry;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 250px;
+    width: 300px;
     overflow: hidden;
   }
 
   #outtitle {
-    color: $col-light;
-    margin: 10px 0px;
-    font-size: 25px;
+    color: $title;
+    position: absolute;
+    background-color: $entry;
+    width: 260px;
+    height: auto;
+    max-height: 95px;
+    overflow: hidden;
+    border-radius: 25px;
+    top: 230px;
+    left: 20px;
+    font-size: 30px;
+    font-weight: 800;
     text-align: center;
     white-space: pre-wrap;
   }
 
   #outdate {
-    color: $col-light;
+    color: $text;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 10px;
+    right: 10px;
   }
 }
 </style>

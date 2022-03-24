@@ -1,6 +1,6 @@
 <template>
   <div id="body">
-    <button @click="router.push('/')" id="back">GO BACK</button>
+    <button @click="router.push('/')" id="back">Blogwiz</button>
     <div class="formcontainer">
       <RouterView />
     </div>
@@ -17,21 +17,22 @@ import router from "../router";
 
 #body {
   height: 100vh;
-  background-color: $col-dark1;
+  background-color: $background;
   display: flex;
   align-items: center;
   justify-content: center;
 
   #back {
     position: absolute;
-    top: 10vh;
-    left: 10vh;
-    padding: 10px;
-    font-size: 20px;
-    border-radius: 50px;
+    top: 28px;
+    left: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    color: $title;
+    background: transparent;
+    border: none;
 
     &:hover {
-      transform: scale(1.01);
       cursor: pointer;
     }
   }
@@ -43,7 +44,7 @@ import router from "../router";
     width: fit-content;
     padding: 35px 30px;
     border-radius: 20px;
-    background-color: $col-lime;
+    background-color: $form;
   }
 }
 </style>
