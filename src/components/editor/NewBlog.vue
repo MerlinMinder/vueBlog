@@ -62,7 +62,7 @@ const adjustImg = () => {
     let tempImg = document.createElement("div");
     tempImg.innerHTML = img.value;
     tempImg = tempImg.firstChild.firstChild;
-    tempImg.style.cssText = "width: 100%; height: 250px; object-fit: cover;";
+    tempImg.style.cssText = "width: 100%; height: 100%; object-fit: cover;";
     img.value = tempImg.outerHTML;
     adjustButtonText.value = "Adjust Image";
   } catch (e) {

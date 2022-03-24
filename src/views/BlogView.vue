@@ -1,6 +1,9 @@
 <template>
   <div id="page">
-    <p id="title">{{ route.params.title }}</p>
+    <div id="container">
+      <p id="title">{{ route.params.title }}</p>
+      <div id="img" v-html="blogs.blogs[route.params.title].img"></div>
+    </div>
     <div id="postscontainer">
       <div class="post" v-for="post of blogs.blogs[route.params.title].posts">
         <p>{{ post.upload.slice(0, 24) }}</p>
@@ -28,12 +31,25 @@ const route = useRoute();
   padding-bottom: 100px;
   background-color: $background;
 
-  #title {
-    margin: 50px;
-    margin-bottom: 30px;
-    font-size: 25px;
-    font-weight: 800;
+  #container {
+    display: flex;
+    flex-direction: row;
     width: 1000px;
+    margin: 50px 0px;
+    align-items: center;
+
+    #title {
+      font-size: 30px;
+      font-weight: 800;
+      white-space: pre-wrap;
+      text-align: center;
+      margin-right: 30px;
+    }
+
+    #img {
+      width: 200px;
+      height: 180px;
+    }
   }
 
   .post {
