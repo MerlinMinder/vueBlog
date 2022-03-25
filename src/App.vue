@@ -13,6 +13,7 @@ import FooterVue from "./components/navigation/Footer.vue";
 import { useBlogStore } from "./stores/stores";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "./firebase/firebaseinit";
+import { onBeforeMount, ref } from "vue";
 
 const fetchBlogs = async () => {
   const blogs = useBlogStore();
@@ -29,10 +30,8 @@ const fetchBlogs = async () => {
     blog["posts"] = posts;
     blogs.addblog(blog);
   });
-  return;
 };
-
-fetchBlogs();
+onBeforeMount(fetchBlogs());
 </script>
 
 <style lang="scss">

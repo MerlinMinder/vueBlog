@@ -1,27 +1,27 @@
 <template>
   <div id="page" v-if="blog1">
     <div class="blogshow">
-      <div v-html="blog1['Blogwiz\nVue + Firebase'].img" class="blogimg"></div>
+      <div v-html="blog1['BlogwizVueFirebase'].img" class="blogimg"></div>
       <div class="title">
-        {{ blog1["Blogwiz\nVue + Firebase"].title + "\n"
+        {{ blog1["BlogwizVueFirebase"].title + "\n"
         }}<RouterLink
           class="link"
-          :to="`/posts/${blog1['Blogwiz\nVue + Firebase'].title}`"
+          :to="`/posts/${blog1['BlogwizVueFirebase'].title}`"
           >Visit Blog</RouterLink
         >
       </div>
     </div>
     <div class="blogshow">
       <div class="title">
-        {{ blog1["Fitness App\n(My First App)"].title + "\n"
+        {{ blog1["FitnessAppMyFirstApp"].title + "\n"
         }}<RouterLink
           class="link"
-          :to="`/posts/${blog1['Fitness App\n(My First App)'].title}`"
+          :to="`/posts/${blog1['FitnessAppMyFirstApp'].title}`"
           >Visit Blog</RouterLink
         >
       </div>
       <div
-        v-html="blog1['Fitness App\n(My First App)'].img"
+        v-html="blog1['FitnessAppMyFirstApp'].img"
         class="blogimg right"
       ></div>
     </div>

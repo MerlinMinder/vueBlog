@@ -17,7 +17,7 @@ export const useBlogStore = defineStore({
   getters: {},
   actions: {
     addblog(blog) {
-      this.blogs[blog.title] = blog;
+      this.blogs[blog.title.replace(/[^a-zA-Z0-9]/g, "")] = blog;
     },
   },
 });

@@ -1,7 +1,7 @@
 <template>
-  <div id="page" v-if="blog1">
+  <div id="page" v-if="blog1[route.params.title] != undefined">
     <div id="container">
-      <p id="title">{{ route.params.title }}</p>
+      <p id="title">{{ blog1[route.params.title].title }}</p>
       <div id="img" v-html="blog1[route.params.title].img"></div>
     </div>
     <div id="postscontainer">

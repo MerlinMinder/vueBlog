@@ -6,7 +6,7 @@
         class="blogs"
         v-for="blog of blogs.blogs"
         :key="blog"
-        :to="`/posts/${blog.title}`"
+        :to="`/posts/${blog.title.replace(/[^a-zA-Z0-9]/g, '')}`"
       >
         <BlogVue :img="blog.img" :title="blog.title" :date="blog.upload" />
       </RouterLink>
