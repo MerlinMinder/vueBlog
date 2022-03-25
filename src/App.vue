@@ -10,7 +10,6 @@
 import { RouterView, useRoute } from "vue-router";
 import HeaderVue from "./components/navigation/Header.vue";
 import FooterVue from "./components/navigation/Footer.vue";
-import { onBeforeMount } from "@vue/runtime-core";
 import { useBlogStore } from "./stores/stores";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "./firebase/firebaseinit";
@@ -30,9 +29,10 @@ const fetchBlogs = async () => {
     blog["posts"] = posts;
     blogs.addblog(blog);
   });
+  return;
 };
 
-onBeforeMount(fetchBlogs());
+fetchBlogs();
 </script>
 
 <style lang="scss">

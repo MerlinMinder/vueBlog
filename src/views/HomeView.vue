@@ -32,7 +32,6 @@
 import { useBlogStore } from "../stores/stores";
 import { RouterLink } from "vue-router";
 const blogs = useBlogStore();
-
 const blog1 = blogs.blogs;
 </script>
 

@@ -7,7 +7,7 @@
         height: 600,
         width: 1000,
         menubar: true,
-        plugins: ['image', 'code'],
+        plugins: ['image', 'code', 'link'],
         skin: 'oxide-dark',
         statusbar: false,
       }"
@@ -79,6 +79,18 @@ const postBlog = async () => {
       transform: scale(1.02);
     }
   }
+}
+
+h1 {
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h3 {
+  font-weight: bold;
 }
 
 .post {

@@ -1,24 +1,25 @@
 <template>
-  <div id="page">
+  <div id="page" v-if="blog1">
     <div id="container">
       <p id="title">{{ route.params.title }}</p>
-      <div id="img" v-html="blogs.blogs[route.params.title].img"></div>
+      <div id="img" v-html="blog1[route.params.title].img"></div>
     </div>
     <div id="postscontainer">
-      <div class="post" v-for="post of blogs.blogs[route.params.title].posts">
+      <div class="post" v-for="post of blog1[route.params.title].posts">
         <p>{{ post.upload.slice(0, 24) }}</p>
         <div v-html="post.data"></div>
       </div>
     </div>
   </div>
+  <div v-else>{{ blog1 }}</div>
 </template>
 
 <script setup>
 import { useRoute } from "vue-router";
 import { useBlogStore } from "../stores/stores";
-
-const blogs = useBlogStore();
 const route = useRoute();
+const blogs = useBlogStore();
+const blog1 = blogs.blogs;
 </script>
 
 <style lang="scss" scoped>
