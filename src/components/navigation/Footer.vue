@@ -2,7 +2,7 @@
   <footer>
     <SocialLinksVue class="socials" />
     <RouterLinksVue class="routers" />
-    <p id="copyright">Copyright 2022 All Righs Reserved</p>
+    <p id="copyright">Copyright 2022 All Rights Reserved</p>
   </footer>
 </template>
 

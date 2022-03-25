@@ -4,9 +4,7 @@
       <div v-html="blog1['BlogwizVueFirebase'].img" class="blogimg"></div>
       <div class="title">
         {{ blog1["BlogwizVueFirebase"].title + "\n"
-        }}<RouterLink
-          class="link"
-          :to="`/posts/${blog1['BlogwizVueFirebase'].title}`"
+        }}<RouterLink class="link" :to="`/posts/BlogwizVueFirebase`"
           >Visit Blog</RouterLink
         >
       </div>
@@ -14,9 +12,7 @@
     <div class="blogshow">
       <div class="title">
         {{ blog1["FitnessAppMyFirstApp"].title + "\n"
-        }}<RouterLink
-          class="link"
-          :to="`/posts/${blog1['FitnessAppMyFirstApp'].title}`"
+        }}<RouterLink class="link" :to="`/posts/FitnessAppMyFirstApp`"
           >Visit Blog</RouterLink
         >
       </div>
