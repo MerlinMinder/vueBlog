@@ -6,7 +6,7 @@
     </div>
     <div id="postscontainer">
       <div class="post" v-for="post of blog1[route.params.title].posts">
-        <p>{{ post.upload.slice(0, 24) }}</p>
+        <p>{{ Date(post.upload).slice(0, 24) }}</p>
         <div v-html="post.data"></div>
       </div>
     </div>

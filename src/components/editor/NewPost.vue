@@ -20,7 +20,7 @@
   </div>
 
   <div v-if="preview" class="post">
-    <p>{{ Date().slice(0, 24) }}</p>
+    <p>{{ Date(Date.now()).slice(0, 24) }}</p>
     <div v-html="content"></div>
   </div>
 </template>
@@ -38,8 +38,8 @@ const route = useRoute();
 
 const postBlog = async () => {
   await setDoc(
-    doc(db, `blogs/${route.params.title}/posts`, Date().slice(0, 24)),
-    { data: content.value, upload: Date() },
+    doc(db, `blogs/${route.params.title}/posts`, String(Date.now())),
+    { data: content.value, upload: Date.now() },
     { merge: true }
   );
   router.push("/editor/editblogs");

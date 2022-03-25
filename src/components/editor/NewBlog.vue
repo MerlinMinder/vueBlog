@@ -47,7 +47,7 @@ const createBlog = async () => {
   if (img.value && title.value) {
     await setDoc(
       doc(db, "blogs", title.value),
-      { img: img.value, title: title.value, upload: Date().slice(0, 24) },
+      { img: img.value, title: title.value, upload: Date.now() },
       { merge: true }
     );
     submitButtonText.value = "Create New Blog";

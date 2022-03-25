@@ -8,7 +8,11 @@
         :key="blog"
         :to="`/posts/${blog.title.replace(/[^a-zA-Z0-9]/g, '')}`"
       >
-        <BlogVue :img="blog.img" :title="blog.title" :date="blog.upload" />
+        <BlogVue
+          :img="blog.img"
+          :title="blog.title"
+          :date="Date(blog.upload).slice(0, 24)"
+        />
       </RouterLink>
     </div>
   </div>

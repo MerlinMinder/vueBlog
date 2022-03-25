@@ -24,7 +24,7 @@ const fetchBlogs = async () => {
       collection(db, `blogs/${doc.data().title}/posts`)
     );
     postCollection.forEach((postdoc) => {
-      posts.unshift(postdoc.data());
+      posts.push(postdoc.data());
     });
     const blog = doc.data();
     blog["posts"] = posts;
