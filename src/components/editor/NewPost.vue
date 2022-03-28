@@ -1,5 +1,6 @@
 <template>
   <p id="title">New "{{ route.params.title }}" Post</p>
+  <textarea v-model="title" id="textarea"></textarea>
   <div id="editor-container">
     <editor
       api-key="jsvlfar0ke1dnz3qs8fab25fyog6zo4vrwgfc5hwidmle72z"
@@ -20,7 +21,8 @@
   </div>
 
   <div v-if="preview" class="post">
-    <p>{{ Date(Date.now()).slice(0, 24) }}</p>
+    <p id="previewtitle">{{ title }}</p>
+    <p id="previewdate">{{ Date(Date.now()).slice(0, 24) }}</p>
     <div v-html="content"></div>
   </div>
 </template>
@@ -32,6 +34,7 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { db } from "../../firebase/firebaseinit";
 import router from "../../router";
+const title = ref("");
 const content = ref("");
 const preview = ref(false);
 const route = useRoute();
@@ -39,7 +42,7 @@ const route = useRoute();
 const postBlog = async () => {
   await setDoc(
     doc(db, `blogs/${route.params.title}/posts`, String(Date.now())),
-    { data: content.value, upload: Date.now() },
+    { data: content.value, upload: Date.now(), title: title.value },
     { merge: true }
   );
   router.push("/editor/editblogs");
@@ -56,8 +59,19 @@ const postBlog = async () => {
   font-weight: bolder;
 }
 
+#textarea {
+  resize: none;
+  width: 300px;
+  height: 40px;
+  overflow-y: hidden;
+  padding: 5px;
+  right: 350px;
+  top: 20px;
+  font-size: 20px;
+}
+
 #editor-container {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 #buttoncontainer {
@@ -100,10 +114,16 @@ h3 {
   border-radius: 10px;
   margin: 20px;
 
-  p {
+  #previewdate {
     text-align: right;
     border-bottom: 1px solid $border;
     margin-bottom: 10px;
+  }
+
+  #previewtitle {
+    position: absolute;
+    font-size: 20px;
+    top: 3px;
   }
 
   div {

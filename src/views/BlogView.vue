@@ -6,7 +6,8 @@
     </div>
     <div id="postscontainer">
       <div class="post" v-for="post of blog1[route.params.title].posts">
-        <p>{{ Date(post.upload).slice(0, 24) }}</p>
+        <p id="posttitle" v-if="post.title">{{ post.title }}</p>
+        <p id="date">{{ Date(post.upload).slice(0, 24) }}</p>
         <div v-html="post.data"></div>
       </div>
     </div>
@@ -60,10 +61,16 @@ const blog1 = blogs.blogs;
     margin: 20px;
     background-color: $post;
 
-    p {
+    #date {
       text-align: right;
       border-bottom: 1px solid $border;
       margin-bottom: 10px;
+    }
+
+    #posttitle {
+      position: absolute;
+      font-size: 20px;
+      top: 3px;
     }
 
     div {
